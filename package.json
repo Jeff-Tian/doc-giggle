@@ -1,6 +1,6 @@
 {
   "name": "doc-giggle",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": "Jeff Tian",
   "main": "dist/index.js",
@@ -13,7 +13,8 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint"
+    "lint": "tsdx lint",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {},
   "husky": {
@@ -32,9 +33,14 @@
     "husky": "^3.1.0",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "semantic-release": "^15.13.31"
   },
   "dependencies": {
     "cloudmersive-convert-api-client": "^2.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jeff-Tian/doc-giggle.git"
   }
 }
