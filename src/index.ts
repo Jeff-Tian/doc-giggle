@@ -11,16 +11,18 @@ export const sum = (a: number, b: number) => {
 const asyncCallback = (resolve: any, reject: any) => (
   error: any,
   data: any,
-  _response: any
+  response: any
 ) => {
   if (error) {
     reject(error);
   } else {
-    resolve(data);
+    resolve({ data, response });
   }
 };
 
-export const convert = async (docUrl: string) => {
+export const convert = async (
+  docUrl: string
+): Promise<{ data: Buffer; response: any }> => {
   const defaultClient = CloudmersiveConvertApiClient.ApiClient.instance;
 
   const Apikey = defaultClient.authentications.Apikey;
