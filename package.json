@@ -14,7 +14,8 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "yarn build"
   },
   "peerDependencies": {},
   "husky": {
