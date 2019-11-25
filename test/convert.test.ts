@@ -1,5 +1,7 @@
 import { convert } from "../src";
 
+jest.setTimeout(120000);
+
 describe("converting", () => {
   it("converts", async () => {
     const res = await convert(
