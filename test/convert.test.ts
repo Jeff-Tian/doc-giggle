@@ -10,5 +10,6 @@ describe("converting", () => {
 
     expect(res.status).toEqual(200);
     expect(res.headers["content-type"]).toEqual("application/pdf");
+    expect(res.data[0]).toEqual(37);
   });
 });
