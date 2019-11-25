@@ -13,7 +13,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "lint": "tsdx lint",
+    "lint": "tsdx lint --fix",
     "semantic-release": "semantic-release",
     "prepare": "yarn build"
   },

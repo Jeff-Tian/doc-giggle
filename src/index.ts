@@ -9,6 +9,7 @@ export const convert = async (docUrl: string) => {
     files: originalFile,
     data: {
       file: new URL(docUrl).pathname.substr(1)
-    }
+    },
+    timeout: [10000, 30000]
   });
 };
