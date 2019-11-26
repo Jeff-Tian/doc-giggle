@@ -34,7 +34,6 @@
     "jest-config": "latest"
   },
   "dependencies": {
-    "urllib-x": "latest",
     "request": "latest"
   },
   "repository": {
