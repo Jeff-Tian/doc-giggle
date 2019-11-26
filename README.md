@@ -1,5 +1,27 @@
 # doc-giggle
 
+> Give me a docx/xlsx/pptx, I'll give you a pdf.
+
+[![Build Status](https://travis-ci.com/Jeff-Tian/doc-giggle.svg?branch=master)](https://travis-ci.com/Jeff-Tian/doc-giggle)
+
+## Installation:
+
+```shell
+npm i doc-giggle --save
+```
+
+## Usage:
+
+```typescript
+import { convert } from 'doc-giggle'
+import fs from 'fs'
+
+const pdfResponse = await convert('https://your-word/excel/ppt/url')
+
+fs.writeFileSync('test.pdf', pdfResponse.body)
+
+```
+
 > This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 [![Build Status](https://travis-ci.com/Jeff-Tian/doc-giggle.svg?branch=master)](https://travis-ci.com/Jeff-Tian/doc-giggle)
