@@ -3,7 +3,7 @@ import { testingXlsx } from "./fixtures/testingFiles";
 
 jest.setTimeout(120000);
 
-describe("converting by fc-doc-rotary", () => {
+describe.skip("converting by fc-doc-rotary", () => {
   it("converts", async () => {
     const res = await convertByFcDocRotary(testingXlsx);
 
