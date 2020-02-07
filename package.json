@@ -15,7 +15,8 @@
     "test": "tsdx test",
     "lint": "tsdx lint --fix",
     "semantic-release": "semantic-release",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "commit": "git commit -a -t commit.txt"
   },
   "peerDependencies": {},
   "husky": {
