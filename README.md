@@ -3,31 +3,53 @@
 > Give me a docx/xlsx/pptx, I'll give you a pdf.
 
 [![Build Status](https://travis-ci.com/Jeff-Tian/doc-giggle.svg?branch=master)](https://travis-ci.com/Jeff-Tian/doc-giggle)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-## Installation:
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Jeff-Tian_doc-giggle)](https://sonarcloud.io/dashboard?id=Jeff-Tian_doc-giggle)
+
+## Installation
 
 ```shell
 npm i doc-giggle --save
 ```
 
-## Usage:
+## Usage
+
+### Get pdf file stream directly
 
 ```typescript
-import { convert } from 'doc-giggle'
-import fs from 'fs'
+import { convert } from "doc-giggle";
+import fs from "fs";
 
-const pdfResponse = await convert('https://your-word/excel/ppt/url')
+const pdfResponse = await convert("https://your-word/excel/ppt/url");
 
-fs.writeFileSync('test.pdf', pdfResponse.body)
-
+fs.writeFileSync("test.pdf", pdfResponse.body);
 ```
 
+### Get pdf download link
+
+**Caution**: The download link is temporary and will be deleted by arbitrary time, so you should download and save it to your storage as quickly as you can.
+
+```typescript
+import { convertByFcDocRotary } from "doc-giggle";
+
+const { sourceFileUrl, pdfUrl } = await convertByFcDocRotary(
+  "https://your-word/excel/ppt/url"
+);
+```
+
+## How
+
+There are several backend servers work behind the scene, which use `libreoffice`'s command line to convert the the office document into pdf file.
+
+### They are
+
+- [doc-rotary](https://github.com/Jeff-Tian/doc-rotary)
+- [fc-doc-rotary](https://github.com/Jeff-Tian/fc-doc-rotary)
+
+## Credits
+
 > This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
-
-[![Build Status](https://travis-ci.com/Jeff-Tian/doc-giggle.svg?branch=master)](https://travis-ci.com/Jeff-Tian/doc-giggle)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Jeff-Tian_doc-giggle)](https://sonarcloud.io/dashboard?id=Jeff-Tian_doc-giggle)
 
 ## Local Development
 
