@@ -53,6 +53,16 @@ There are several backend servers work behind the scene, which use `libreoffice`
 
 ## Local Development
 
+### Install dependencies
+
+```bash
+pnpm i
+# or
+npm i
+# or
+yarn install
+```
+
 Below is a list of commands you will probably find useful.
 
 ### `npm start` or `yarn start`
