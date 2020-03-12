@@ -11,16 +11,21 @@ interface ILogger {
   info: (...args: any) => void;
 }
 
-export const convert = async (fileUrl: string, logger: ILogger = console) => {
+export const convert = async (
+  fileUrl: string,
+  logger: ILogger = { error: console.error, info: console.log }
+) => {
   try {
     const res = await convertByFcDocRotary(fileUrl);
 
     logger.info("convertByFcDocRotary Result: ", { res });
 
-    assert(res.statusCode === 200);
-    assert(res.headers["content-type"] === "application/json");
-    assert(res.body.hasOwnProperty("sourceFileUrl"));
-    assert(res.body.hasOwnProperty("pdfUrl"));
+    assert(res.statusCode === 200, "status should be 200");
+    assert(
+      res.body.hasOwnProperty("sourceFileUrl"),
+      "should contain `sourceFileUrl`"
+    );
+    assert(res.body.hasOwnProperty("pdfUrl"), "should contain `pdfUrl`");
 
     return await download(res.body.pdfUrl);
   } catch (ex) {
