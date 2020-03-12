@@ -6,7 +6,11 @@ import { download } from "./download";
 export { convertByDocRotary } from "./convertByDocRotary";
 export { convertByFcDocRotary } from "./convertByFcDocRotary";
 
-export const convert = async (fileUrl: string) => {
+interface ILogger {
+  error: (...args: any) => void;
+}
+
+export const convert = async (fileUrl: string, logger: ILogger = console) => {
   try {
     const res = await convertByFcDocRotary(fileUrl);
 
@@ -17,6 +21,7 @@ export const convert = async (fileUrl: string) => {
 
     return await download(res.body.pdfUrl);
   } catch (ex) {
+    logger.error(`convertByFcDocRotary error: `, { ex });
     return await convertByDocRotary(fileUrl);
   }
 };
