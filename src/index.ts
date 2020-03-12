@@ -8,11 +8,14 @@ export { convertByFcDocRotary } from "./convertByFcDocRotary";
 
 interface ILogger {
   error: (...args: any) => void;
+  info: (...args: any) => void;
 }
 
 export const convert = async (fileUrl: string, logger: ILogger = console) => {
   try {
     const res = await convertByFcDocRotary(fileUrl);
+
+    logger.info("convertByFcDocRotary Result: ", { res });
 
     assert(res.statusCode === 200);
     assert(res.headers["content-type"] === "application/json");
