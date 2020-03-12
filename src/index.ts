@@ -18,16 +18,27 @@ export const convert = async (
   try {
     const res = await convertByFcDocRotary(fileUrl);
 
-    logger.info("convertByFcDocRotary Result: ", { res });
+    logger.info("convertByFcDocRotary Result: ", {
+      body: res.body,
+      statusCode: res.statusCode,
+      typeOfBody: typeof res.body
+    });
 
     assert(res.statusCode === 200, "status should be 200");
+
+    let body = res.body;
+
+    if (typeof res.body === "string") {
+      body = JSON.parse(body);
+    }
+
     assert(
-      res.body.hasOwnProperty("sourceFileUrl"),
+      body.hasOwnProperty("sourceFileUrl"),
       "should contain `sourceFileUrl`"
     );
-    assert(res.body.hasOwnProperty("pdfUrl"), "should contain `pdfUrl`");
+    assert(body.hasOwnProperty("pdfFileUrl"), "should contain `pdfFileUrl`");
 
-    return await download(res.body.pdfUrl);
+    return await download(body.pdfFileUrl);
   } catch (ex) {
     logger.error(`convertByFcDocRotary error: `, { ex });
     return await convertByDocRotary(fileUrl);
